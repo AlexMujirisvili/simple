@@ -1,0 +1,12 @@
+<app-header></app-header>
+<br />
+<button mat-button (click)="add()">ახალი მომხმარებლის დამატება</button>
+<h2>რეგისტრირებული მომხმარებლები</h2>
+<ul class="users">
+    <li *ngFor="let user of users">
+        <p>სახელი: {{user.username}}</p>
+        <p>ასაკი: {{user.age}}</p>
+        <p>დახასიათება: {{user.description}}</p>
+    </li>
+</ul>
+<app-footer></app-footer>

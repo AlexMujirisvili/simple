@@ -1,0 +1,15 @@
+<app-header></app-header>
+<br />
+<button mat-raised-button color="primary" (click)="add()">ახალი სიახლის დამატება</button>
+<br />
+<h2>სიახლეები</h2>
+<ul>
+  <li *ngFor="let new of news">
+    <p>დრო: {{new.time}}</p>
+    <p>სათაური: {{new.header}}</p>
+    <p>ტექსტი:</p>
+    <p>{{new.body}}</p>
+    <button (click)="edit()">რედაქტირება</button>
+  </li>
+</ul>
+<app-footer></app-footer>

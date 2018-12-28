@@ -1,4 +1,4 @@
-export class User{
+export class User {
     public username: string;
     public age: number;
     public description: string;

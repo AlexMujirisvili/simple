@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ActionDialogComponent } from './action-dialog/action-dialog.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
     UserComponent,
     FooterComponent,
     NewsComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    ActionDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,8 +33,9 @@ import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatDialogModule,
     BrowserAnimationsModule
   ],
-  entryComponents:[
-    UserDetailComponent
+  entryComponents: [
+    UserDetailComponent,
+    ActionDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

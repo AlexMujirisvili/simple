@@ -1,21 +1,32 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { New } from '../models/New';
 import { Observable, of } from 'rxjs';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
-export class NewsService{
+export class NewsService implements OnInit {
 
 
-     private news: New[] = [];
+  /**
+   *
+   */
+  constructor() {
+    this.news.push(new New(new Date('2016-01-17'), 'First app', 'At this time first app was created'));
+    this.news.push(new New(new Date('2016-02-17'), 'Second app', 'At this time second app was created'));
+  }
+  private news: New[] = [];
 
-     get(): Observable<New[]>{
+  ngOnInit(): void {
 
-        this.news.push(new New(new Date("2016-01-17"), "First app", "At this time first app was created"));
-        this.news.push(new New(new Date("2016-02-17"), "First app", "At this time second app was created"));
+  }
 
-        return of(this.news);
-     }
+  get(): Observable<New[]> {
+    return of(this.news);
+  }
+
+  add(date: Date, header: string, body: string): void {
+    this.news.push(new New(date, header, body));
+  }
 
 }

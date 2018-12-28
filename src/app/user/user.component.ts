@@ -3,6 +3,7 @@ import { UserService } from '../services/UserService';
 import { User } from '../models/user';
 import { MatDialog } from '@angular/material';
 import { UserDetailComponent } from '../user-detail/user-detail.component';
+import { ActionDialogComponent } from '../action-dialog/action-dialog.component';
 
 @Component({
   selector: 'app-user',
@@ -21,22 +22,37 @@ export class UserComponent implements OnInit {
   }
 
   get(): void {
-    this.users = [];
     this.userService.getAll().subscribe(users => this.users = users);
   }
 
   add(): void {
-    let dialogRef = this.dialog.open(UserDetailComponent, {
+
+    const dialogRef = this.dialog.open(UserDetailComponent, {
       width: '600px',
       height: '600px',
-      data: {
-        
-      }
-    })
+    });
 
     dialogRef.afterClosed().subscribe(result => {
-      alert("Dialog was closed");
-    })
+      this.get();
+    });
+  }
+
+  delete(user: User): void {
+
+    const dialogRef = this.dialog.open(ActionDialogComponent, {
+      width: '500px',
+      height: '500px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      const k = result as boolean;
+      if (k) {
+        this.userService.delete(user);
+        this.get();
+      } else {
+      }
+    });
+
   }
 
 }
